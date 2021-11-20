@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     public GameObject enemyProjectile;
-    Vector3 respawn = new Vector3(7, 4 ,0);
+    GameObject[] projectiles;
+    Vector3 respawn = new Vector3(0, -4 ,0);
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +23,8 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            DestroyAll();
             collision.gameObject.transform.position = respawn;
-            Destroy(enemyProjectile);
             GameManager.lives--;
             GameManager.playGame = false;
         }
@@ -33,4 +34,17 @@ public class EnemyProjectile : MonoBehaviour
         }
 
     }
+
+    void DestroyAll()
+    {
+        Destroy(enemyProjectile);
+        projectiles = GameObject.FindGameObjectsWithTag("EnemyProjectile");
+        for (var i = 0; i < projectiles.Length; i++)
+        {
+            Destroy(projectiles[i]);
+        }
+    }
+    
+    
+
 }

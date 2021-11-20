@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     public GameObject projectile;
     public GameObject projectileClone;
 
+    //public AudioSource audioSource;
+   // public AudioClip audioClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,23 +38,20 @@ public class Player : MonoBehaviour
         {
             transform.Translate(new Vector3(5 * Time.deltaTime, 0, 0));
         }
-
-        if(Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.Translate(new Vector3(0, -5 * Time.deltaTime, 0));
-        }
-
-        if(Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(new Vector3(0, 5 * Time.deltaTime, 0));
-        }
     }
 
     void fireProjectile()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && projectileClone == null)
-        {
-            projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 0.6f, 0), player.transform.rotation) as GameObject;
-        }
-    }
+        if (Input.GetKeyDown(KeyCode.Space) && projectileClone == null)
+           // playClip();
+        projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 0.6f, 0), player.transform.rotation) as GameObject;
+      
+           }
+   /* public void playClip()
+    {
+        audioSource.clip = audioClip;
+        audioSource.Play();
+    }*/
 }
+
+

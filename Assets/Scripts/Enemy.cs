@@ -21,7 +21,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.playGame)
+        
+        if (GameManager.playGame)
         {
         if(numOfMovements == 14)
         {
@@ -32,7 +33,8 @@ public class Enemy : MonoBehaviour
         }
 
         timer += Time.deltaTime;
-        if(timer > timeToMove && numOfMovements <  14)
+
+            if (timer > timeToMove && numOfMovements <  14)
         {
             transform.Translate(new Vector3(speed, 0, 0));
             timer = 0;
@@ -45,7 +47,7 @@ public class Enemy : MonoBehaviour
 
     void fireEnemyProjectile()
     {
-        if(Random.Range(0f, 750f) < 1)
+        if(Random.Range(0f, 10000f) < 1)
         {
             enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(enemy.transform.position.x, enemy.transform.position.y - 0.4f, 0), enemy.transform.rotation) as GameObject;
         }

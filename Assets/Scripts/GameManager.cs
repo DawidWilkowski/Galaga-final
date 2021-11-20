@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
         livesText.text = "Lives: " + lives;
         if(lives  == 0)
         {
-            endScreen.text = "!!!GAME OVER ty kurwo!!!";
+            endScreen.text = "GAME OVER";
         }
+        
     }
 }
