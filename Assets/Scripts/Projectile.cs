@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Projectile : MonoBehaviour
 {
     public GameObject projectile;
+   
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -21,6 +21,7 @@ public class Projectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            Enemy.isDestroyed = true;
             Destroy(collision.gameObject);
             Destroy(projectile);
             GameManager.playGame = true;

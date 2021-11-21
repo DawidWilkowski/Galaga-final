@@ -6,6 +6,7 @@ public class EnemyProjectile : MonoBehaviour
 {
     public GameObject enemyProjectile;
     GameObject[] projectiles;
+    //public AudioSource destroy;
     Vector3 respawn = new Vector3(0, -4 ,0);
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,10 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            Player.isDestroyed = true;
             DestroyAll();
             collision.gameObject.transform.position = respawn;
+        
             GameManager.lives--;
             GameManager.playGame = false;
         }

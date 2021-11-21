@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
     public GameObject enemy;
     public GameObject enemyProjectile;
     public GameObject enemyProjectileClone;
+    public static bool isDestroyed = false;
+    public AudioSource destroy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isDestroyed == true) {
+            destroy.Play();
+            isDestroyed = false;
+        } 
         if (GameManager.playGame)
         {
         if(numOfMovements == 14)
@@ -53,4 +59,3 @@ public class Enemy : MonoBehaviour
         }
     }
 }
-//wale k.
