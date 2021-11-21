@@ -7,9 +7,9 @@ public class Player : MonoBehaviour
     public GameObject player;
     public GameObject projectile;
     public GameObject projectileClone;
-
+    public AudioSource shoot;
     //public AudioSource audioSource;
-   // public AudioClip audioClip;
+    // public AudioClip audioClip;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.lives > 0)
+       
+        if (GameManager.lives > 0)
         {
             movement();
             fireProjectile();
@@ -43,9 +44,12 @@ public class Player : MonoBehaviour
     void fireProjectile()
     {
         if (Input.GetKeyDown(KeyCode.Space) && projectileClone == null)
-           // playClip();
-        projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 0.6f, 0), player.transform.rotation) as GameObject;
-      
+        {
+            
+            projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 0.6f, 0), player.transform.rotation) as GameObject;
+            Debug.Log("co");
+            shoot.Play();
+        }
            }
    /* public void playClip()
     {
