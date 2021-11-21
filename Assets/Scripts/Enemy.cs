@@ -53,3 +53,4 @@ public class Enemy : MonoBehaviour
         }
     }
 }
+//wale k.
