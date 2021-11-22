@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Projectile : MonoBehaviour
 {
     public GameObject projectile;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +21,9 @@ public class Projectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")    //tag do enemy
         {
-            Destroy(collision.gameObject);   //niszcz enemy poddane kolizji
-            Destroy(projectile);             //niszcz pocisk
+            Enemy.isDestroyed = true;
+            Destroy(collision.gameObject);  //niszcz enemy poddane kolizji
+            Destroy(projectile);            //niszcz pocisk
             GameManager.playGame = true;
         }
         if(collision.gameObject.tag == "Finish")     //kolizje ze ścianą

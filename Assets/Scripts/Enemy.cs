@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
     public GameObject enemy;
     public GameObject enemyProjectile;
     public GameObject enemyProjectileClone;
+    public static bool isDestroyed = false;
+    public AudioSource destroy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +24,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (GameManager.playGame)   //jeśli gra trwa
+        if (isDestroyed == true) {
+            destroy.Play();
+            isDestroyed = false;
+        }
+        if (GameManager.playGame)  //jeśli gra trwa
         {
         if(numOfMovements == 14)     //zderzenie ze ścianą
         {

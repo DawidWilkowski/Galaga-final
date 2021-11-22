@@ -23,9 +23,11 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            DestroyAll();     //enemy's niszczą nas(not only)
-            collision.gameObject.transform.position = respawn;  //ustawianie pozycji na nowo
-            GameManager.lives--;    //życie mniej
+            Player.isDestroyed = true;
+            DestroyAll(); //enemy's niszczą nas(not only)
+            collision.gameObject.transform.position = respawn; //ustawianie pozycji na nowo
+
+            GameManager.lives--;  //życie mniej
             GameManager.playGame = false;  //info o zupełnej przegranej
         }
         if(collision.gameObject.tag == "Finish")  //kolizja ze ścianą

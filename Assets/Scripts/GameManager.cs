@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -18,10 +19,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))// Esc wyrzuca do menu
+        {
+            SceneManager.LoadScene("Menu");
+            lives = 3;
+        }
+
         livesText.text = "Lives: " + lives;
         if(lives  == 0)
         {
-            endScreen.text = "GAME OVER";   // :-(
+            SceneManager.LoadScene("GameOver");
+            lives = 3;
         }
 
     }
