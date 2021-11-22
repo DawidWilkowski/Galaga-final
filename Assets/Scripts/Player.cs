@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void movement() // poruszanie się player'em prawo/lewo
+        void movement()  // poruszanie się player'em prawo/lewo
     {
         if(Input.GetKey(KeyCode.RightArrow))
         {

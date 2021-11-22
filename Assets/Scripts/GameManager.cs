@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("GameOver");
             lives = 3;
         }
-
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
     }
 }
