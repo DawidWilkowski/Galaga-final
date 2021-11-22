@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
 
     void fireEnemyProjectile()
     {
-        if(Random.Range(0f, 10000f) < 1)
+        if(Random.Range(0f, 1000f) < 1)
         {
             enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(enemy.transform.position.x, enemy.transform.position.y - 0.4f, 0), enemy.transform.rotation) as GameObject;
         }

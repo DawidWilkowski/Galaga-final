@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void movement()
+        void movement()
     {
         if(Input.GetKey(KeyCode.RightArrow))
         {
