@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static int lives = 3;
+    public static int lives = 3;    //3 życia
     public static bool playGame = true;
-    public Text livesText;
-    public Text endScreen;
+    public Text livesText;  //box z textem o życiach
+    public Text endScreen;  //box napisy końcowe/END
     // Start is called before the first frame update
     void Start()
     {
-        livesText.text = "Lives: " + lives;
+        livesText.text = "Lives: " + lives;   //info nt. żyć
     }
 
     // Update is called once per frame
@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
         livesText.text = "Lives: " + lives;
         if(lives  == 0)
         {
-            endScreen.text = "GAME OVER";
+            endScreen.text = "GAME OVER";   // :-(
         }
-        
+
     }
 }

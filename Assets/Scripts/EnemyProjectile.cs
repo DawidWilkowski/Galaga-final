@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     public GameObject enemyProjectile;
-    GameObject[] projectiles;
-    Vector3 respawn = new Vector3(0, -4 ,0);
+    GameObject[] projectiles;   //tablica z pociskami/duża ich ilość
+    Vector3 respawn = new Vector3(0, -4 ,0);  //respawn w domyślnej pozycji
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -23,19 +23,19 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            DestroyAll();
-            collision.gameObject.transform.position = respawn;
-            GameManager.lives--;
-            GameManager.playGame = false;
+            DestroyAll();     //enemy's niszczą nas(not only)
+            collision.gameObject.transform.position = respawn;  //ustawianie pozycji na nowo
+            GameManager.lives--;    //życie mniej
+            GameManager.playGame = false;  //info o zupełnej przegranej
         }
-        if(collision.gameObject.tag == "Finish")
+        if(collision.gameObject.tag == "Finish")  //kolizja ze ścianą
         {
-            Destroy(enemyProjectile);
+            Destroy(enemyProjectile);    //i samozniszczenie pocisku
         }
 
     }
 
-    void DestroyAll()
+    void DestroyAll()    //na końcu niszczymy wszystko
     {
         Destroy(enemyProjectile);
         projectiles = GameObject.FindGameObjectsWithTag("EnemyProjectile");
@@ -44,7 +44,7 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(projectiles[i]);
         }
     }
-    
-    
+
+
 
 }

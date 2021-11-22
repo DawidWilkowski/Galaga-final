@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{   
+{
     public GameObject player;
-    public GameObject projectile;
-    public GameObject projectileClone;
+    public GameObject projectile;   //wartość prefab'u
+    public GameObject projectileClone;  //multikopie tego samego
 
     //public AudioSource audioSource;
    // public AudioClip audioClip;
@@ -14,20 +14,20 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.lives > 0)
+        if(GameManager.lives > 0)     //jeśli zginiemy, nie możemy dalej grać
         {
-            movement();
-            fireProjectile();
+            movement();  //funkcja poruszania player'em
+            fireProjectile();  //funkcja wystrzeliwująca
         }
     }
 
-    void movement()
+    void movement() // poruszanie się player'em prawo/lewo
     {
         if(Input.GetKey(KeyCode.RightArrow))
         {
@@ -40,12 +40,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    void fireProjectile()
+    void fireProjectile()   //strzelamy
     {
-        if (Input.GetKeyDown(KeyCode.Space) && projectileClone == null)
+        if (Input.GetKeyDown(KeyCode.Space) && projectileClone == null)  //strzelamy przecież większą ilością pocisków niż 1
            // playClip();
         projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 0.6f, 0), player.transform.rotation) as GameObject;
-      
+
            }
    /* public void playClip()
     {
@@ -53,5 +53,3 @@ public class Player : MonoBehaviour
         audioSource.Play();
     }*/
 }
-
-

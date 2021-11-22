@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     float timer = 0;
-    float timeToMove = 0.5f;
+    float timeToMove = 0.5f;  //czas DO poruszenia się
     int numOfMovements = 0;
     float speed = 0.25f;
 
@@ -15,18 +15,18 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (GameManager.playGame)
+
+        if (GameManager.playGame)   //jeśli gra trwa
         {
-        if(numOfMovements == 14)
+        if(numOfMovements == 14)     //zderzenie ze ścianą
         {
-            transform.Translate(new Vector3(0, -1, 0));
+            transform.Translate(new Vector3(0, -1, 0));  //enemy's poruszają się stopniowo w jednostajnym kroku i czasie
             numOfMovements = -1;
             speed = -speed;
             timer = 0;
@@ -34,18 +34,18 @@ public class Enemy : MonoBehaviour
 
         timer += Time.deltaTime;
 
-            if (timer > timeToMove && numOfMovements <  14)
+            if (timer > timeToMove && numOfMovements <  14)  //wykonuje aż do momentu zderzenia ze ścianą
         {
             transform.Translate(new Vector3(speed, 0, 0));
             timer = 0;
             numOfMovements++;
         }
 
-        fireEnemyProjectile();
+        fireEnemyProjectile();   //w międzyczasie enemy's strzelają w nas
         }
     }
 
-    void fireEnemyProjectile()
+    void fireEnemyProjectile()   //enemy's strzelają w sposób random'owy
     {
         if(Random.Range(0f, 10000f) < 1)
         {
@@ -53,4 +53,3 @@ public class Enemy : MonoBehaviour
         }
     }
 }
-//wale k.

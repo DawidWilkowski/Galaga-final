@@ -8,26 +8,26 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(0, -5 * Time.deltaTime, 0));
+        transform.Translate(new Vector3(0, -5 * Time.deltaTime, 0));    //wystrzelony pocisk leci w kierunku N
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)    //kolizje z enemy's
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Enemy")    //tag do enemy
         {
-            Destroy(collision.gameObject);
-            Destroy(projectile);
+            Destroy(collision.gameObject);   //niszcz enemy poddane kolizji
+            Destroy(projectile);             //niszcz pocisk
             GameManager.playGame = true;
         }
-        if(collision.gameObject.tag == "Finish")
+        if(collision.gameObject.tag == "Finish")     //kolizje ze ścianą
         {
-            Destroy(projectile);
+            Destroy(projectile);                     //niszcz pocisk
         }
 
     }
